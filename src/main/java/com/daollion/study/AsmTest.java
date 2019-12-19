@@ -24,12 +24,14 @@ public class AsmTest {
 
 
     public static String JAVA_CLASS_FILE_PATH = "/Users/lixiaodaoaaa/project/java/AsmDemo/preAsmData";
+
+    public static String PURPOSE_CLASS_FILE_NAME = "HelloWorld.class";
     public static String MODIFIYED_CLASS_FILE_NAME = "OutputHelloWorld.class";
 
 
     public static void redefineHelloWorldClass() {
         try {
-            InputStream inputStream = new FileInputStream(JAVA_CLASS_FILE_PATH);
+            InputStream inputStream = new FileInputStream(JAVA_CLASS_FILE_PATH + "/" + PURPOSE_CLASS_FILE_NAME);
             // 1. 创建 ClassReader 读入 .class 文件到内存中
             ClassReader reader = new ClassReader(inputStream);
             // 2. 创建 ClassWriter 对象，将操作之后的字节码的字节数组回写
@@ -112,7 +114,25 @@ public class AsmTest {
             mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
 
         }
-
-
     }
+    /*
+
+        public class HelloWorld {
+            public HelloWorld() {
+            }
+
+            public void sayHello() {
+                long var1 = System.currentTimeMillis();
+
+                try {
+                    Thread.sleep(2000L);
+                } catch (InterruptedException var6) {
+                    var6.printStackTrace();
+                }
+
+                long var4 = System.currentTimeMillis() - var1;
+                System.out.println("The cost time of sayHello() is " + var4 + " ms");
+            }
+        }
+     */
 }
