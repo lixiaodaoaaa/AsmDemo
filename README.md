@@ -18,27 +18,26 @@
 
 所谓 Java 类文件，就是通常用 javac 编译器产生的 .class 文件。这些文件具有严格定义的格式。Java 源文件经过 javac 编译器编译之后，将会生成对应的二进制文件。Java 类文件是 8 位字节的二进制流。数据项按顺序存储在 class 文件中，相邻的项之间没有间隔，这使得 class 文件变得紧凑，减少存储空间。一个简单的Hello World程序
 
-    ```
-        public class HelloWorld {
-            public static void main(String[] args) {
-                System.out.println("Hello world");
-            }
+```java
+    public class HelloWorld {
+        public static void main(String[] args) {
+            System.out.println("Hello world");
         }
-    ```
+    }
+```
 经过 javac 编译后，得到的类文件HelloWorld.class，该文件中是由十六进制符号组成的，这一段十六进制符号组成的长串是严格遵守 Java 虚拟机规范。用vim查看HelloWorld.class
 
 
 
 ####  或者通过gradle 编译本项目成class。原理是用javac
 
-    ```
-
-    task buildJavaFile(type: Exec) {
-        def helloWorldJavaPath ="/Users/lixiaodaoaaa/project/java/AsmDemo/src/main/java/com/daollion/study/HelloWorld.java"
-        def buildCommand = ['javac',helloWorldJavaPath]
-        commandLine buildCommand
-    }
-    ```
+```shell
+task buildJavaFile(type: Exec) {
+    def helloWorldJavaPath ="/Users/lixiaodaoaaa/project/java/AsmDemo/src/main/java/com/daollion/study/HelloWorld.java"
+    def buildCommand = ['javac',helloWorldJavaPath]
+    commandLine buildCommand
+}
+```
  *  请自行配置 helloWorldJavaPath 这个变量路径 。就是HelloWorld.java文件路径
  *   ./gradlew buildJavaFile
  *   若您配置了 gradle 环境变量 请直接在Terminal中运行 gradle run
