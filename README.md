@@ -57,11 +57,12 @@ vim HelloWorld.class
 HelloWorld.class文件构成如下：
 ---
 ![](https://raw.githubusercontent.com/lixiaodaoaaa/publicSharePic/master/20191219144356.png)
+---
 从上图中可以看到，一个 Java 类文件大致可以归为 10 个项：
 
 * Magic：该项存放了一个 Java 类文件的魔数（magic number），一个 Java 类文件的前 4 个字节被称为它的魔数。每个正确的 Java 类文件都是以 0xCAFEBABE 开头的，这样保证了 Java 虚拟机能很轻松的分辨出 Java 文件和非 Java 文件。
 
-** 有趣的是，魔数的固定值是Java之父James Gosling制定的，为CafeBabe（咖啡宝贝），而Java的图标为一杯咖啡。**
+> 有趣的是，魔数的固定值是Java之父 **James Gosling**制定的，为CafeBabe（咖啡宝贝），而Java的图标为一杯咖啡。
 
 * Version：该项存放了 Java 类文件的版本信息
 
