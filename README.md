@@ -18,7 +18,7 @@
 
 所谓 Java 类文件，就是通常用 javac 编译器产生的 .class 文件。这些文件具有严格定义的格式。Java 源文件经过 javac 编译器编译之后，将会生成对应的二进制文件。Java 类文件是 8 位字节的二进制流。数据项按顺序存储在 class 文件中，相邻的项之间没有间隔，这使得 class 文件变得紧凑，减少存储空间。一个简单的Hello World程序
 
-    ```java
+    ```
         public class HelloWorld {
             public static void main(String[] args) {
                 System.out.println("Hello world");
@@ -31,7 +31,7 @@
 
 ####  或者通过gradle 编译本项目成class。原理是用javac
 
-    ```java
+    ```
 
     task buildJavaFile(type: Exec) {
         def helloWorldJavaPath ="/Users/lixiaodaoaaa/project/java/AsmDemo/src/main/java/com/daollion/study/HelloWorld.java"
@@ -64,23 +64,23 @@ HelloWorld.class文件构成如下：
 
 ** 有趣的是，魔数的固定值是Java之父James Gosling制定的，为CafeBabe（咖啡宝贝），而Java的图标为一杯咖啡。**
 
-* **Version：**该项存放了 Java 类文件的版本信息
+* Version：该项存放了 Java 类文件的版本信息
 
-* **Constant Pool：**常量池中存储两类常量：字面量与符号引用。字面量为文本字符串和代码中声明为Final的常量值，符号引用如类和接口的全局限定名、字段的名称和描述符、方法的名称和描述符。
+* Constant Pool：常量池中存储两类常量：字面量与符号引用。字面量为文本字符串和代码中声明为Final的常量值，符号引用如类和接口的全局限定名、字段的名称和描述符、方法的名称和描述符。
 
-* **Access_flag：**该项指明了该文件中定义的是类还是接口（一个 class 文件中只能有一个类或接口），同时还指名了类或接口的访问标志，如 public，private, abstract 等信息。
+* Access_flag：该项指明了该文件中定义的是类还是接口（一个 class 文件中只能有一个类或接口），同时还指名了类或接口的访问标志，如 public，private, abstract 等信息。
 
-* **This Class：**指向表示该类全限定名称的字符串常量的指针。
+* This Class：指向表示该类全限定名称的字符串常量的指针。
 
-* **Super Class：**指向表示父类全限定名称的字符串常量的指针。
+* Super Class：指向表示父类全限定名称的字符串常量的指针。
 
-* **Interfaces：**一个指针数组，存放了该类或父类实现的所有接口名称的字符串常量的指针。
+* Interfaces：一个指针数组，存放了该类或父类实现的所有接口名称的字符串常量的指针。
 
-* **Fields：**该项对类或接口中声明的字段进行了细致的描述。需要注意的是，fields 列表中仅列出了本类或接口中的字段，并不包括从超类和父接口继承而来的字段。
+* Fields：该项对类或接口中声明的字段进行了细致的描述。需要注意的是，fields 列表中仅列出了本类或接口中的字段，并不包括从超类和父接口继承而来的字段。
 
-* **Methods：**该项对类或接口中声明的方法进行了细致的描述。例如方法的名称、参数和返回值类型等。需要注意的是，methods 列表里仅存放了本类或本接口中的方法，并不包括从超类和父接口继承而来的方法。
+* Methods：该项对类或接口中声明的方法进行了细致的描述。例如方法的名称、参数和返回值类型等。需要注意的是，methods 列表里仅存放了本类或本接口中的方法，并不包括从超类和父接口继承而来的方法。
 
-* **Class attributes：**该项存放了在该文件中类或接口所定义的属性的基本信息。
+* Class attributes：该项存放了在该文件中类或接口所定义的属性的基本信息。
 
 ### **3、ASM库的结构**
 
