@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+
+
+sourceCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation 'org.ow2.asm:asm-all:5.2'
+}
+
+
+
+task buildJavaFile(type: Exec) {
+    def helloWorldJavaPath ="/Users/lixiaodaoaaa/project/java/AsmDemo/src/main/java/com/daollion/study/HelloWorld.java"
+    def buildCommand = ['javac',helloWorldJavaPath]
+    commandLine buildCommand
+}
